@@ -7,7 +7,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 DEST=purpur-server/src/minecraft/java
 [ -d "$DEST" ] || { echo "先に ./gradlew applyAllPatches を実行してください: $DEST がありません"; exit 1; }
-(cd hnmt-src/tree && find . -name '*.java' -print0) | while IFS= read -r -d '' f; do
+(cd hnmt-src/tree && find . -name '*.java' ! -name '._*' -print0) | while IFS= read -r -d '' f; do
   install -D -m 644 "hnmt-src/tree/$f" "$DEST/${f#./}"
   echo "applied ${f#./}"
 done

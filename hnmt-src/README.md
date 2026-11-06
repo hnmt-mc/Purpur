@@ -18,3 +18,9 @@
 ./hnmt-src/apply.sh
 ./gradlew :purpur-server:createMojmapPaperclipJar
 ```
+
+## 旧方式（廃止）
+
+`hnmt-patches/getplayers-cache.py` は `getPlayers` の変更だけを当てる旧方式。
+`hnmt-src/tree/ServerLevel.java` に同じ変更が含まれるため削除した。
+両方当てると二重適用で壊れるので、必ず `hnmt-build.sh`（applyAllPatches → hnmt-src/apply.sh）を使う。
